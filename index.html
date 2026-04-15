@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Income Tax Calculator 2025-26 | Indiabulls Securities</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="top-banner">
+    Union Budget 2025-26 updates are live — New Tax Regime is now the default.
+    <a href="#">Learn more</a>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="index.html" class="logo-text">Indiabulls <span>Securities</span></a>
+      </div>
+      <nav class="nav">
+        <a href="#">Equity</a>
+        <a href="#">Derivatives</a>
+        <a href="#">Mutual Funds</a>
+        <a href="#">Calculators</a>
+        <a href="#">Research</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#" class="btn-outline">Login</a>
+        <a href="#" class="btn-primary">Open Account</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="#">Home</a> &rsaquo; <a href="#">Calculators</a> &rsaquo; <span>Income Tax Calculator</span>
+      </nav>
+      <h1>Income Tax Calculator</h1>
+      <p>Calculate your income tax liability for FY 2025-26 under Old &amp; New Tax Regimes instantly.</p>
+    </div>
+  </section>
+
+  <!-- Main Calculator Section -->
+  <section class="calculator-section">
+    <div class="container calculator-grid">
+
+      <!-- Left: Inputs -->
+      <div class="calc-inputs card">
+        <h2 class="section-title">Enter Your Details</h2>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label>Assessment Year</label>
+            <select id="assessmentYear">
+              <option value="2025-26">2025-26</option>
+              <option value="2024-25">2024-25</option>
+              <option value="2023-24">2023-24</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Age Category</label>
+            <select id="ageCategory">
+              <option value="below60">Below 60</option>
+              <option value="60to80">60 – 80 (Senior)</option>
+              <option value="above80">Above 80 (Super Senior)</option>
+            </select>
+          </div>
+        </div>
+
+        <h3 class="subsection-title">Income Details</h3>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label>Gross Salary (Annual) <span class="currency">₹</span></label>
+            <input type="number" id="grossSalary" placeholder="e.g. 1200000" min="0" />
+          </div>
+          <div class="form-group">
+            <label>Other Income <span class="currency">₹</span></label>
+            <input type="number" id="otherIncome" placeholder="e.g. 50000" min="0" />
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label>Interest Income <span class="currency">₹</span></label>
+            <input type="number" id="interestIncome" placeholder="e.g. 10000" min="0" />
+          </div>
+          <div class="form-group">
+            <label>Rental Income <span class="currency">₹</span></label>
+            <input type="number" id="rentalIncome" placeholder="e.g. 0" min="0" />
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label>Home Loan Interest (Self-Occupied) <span class="currency">₹</span></label>
+            <input type="number" id="homeLoanSelf" placeholder="max ₹2,00,000" min="0" />
+          </div>
+          <div class="form-group">
+            <label>Home Loan Interest (Let-Out) <span class="currency">₹</span></label>
+            <input type="number" id="homeLoanLetOut" placeholder="e.g. 0" min="0" />
+          </div>
+        </div>
+
+        <h3 class="subsection-title">Deductions (Old Regime only)</h3>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label>Section 80C <span class="hint">(max ₹1,50,000)</span></label>
+            <input type="number" id="sec80c" placeholder="e.g. 150000" min="0" max="150000" />
+          </div>
+          <div class="form-group">
+            <label>Section 80CCD(1B) – NPS <span class="hint">(max ₹50,000)</span></label>
+            <input type="number" id="sec80ccd" placeholder="e.g. 50000" min="0" max="50000" />
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label>Section 80D – Health Insurance <span class="hint">(max ₹25,000)</span></label>
+            <input type="number" id="sec80d" placeholder="e.g. 25000" min="0" max="75000" />
+          </div>
+          <div class="form-group">
+            <label>Section 80E – Education Loan <span class="currency">₹</span></label>
+            <input type="number" id="sec80e" placeholder="e.g. 0" min="0" />
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label>Section 80G – Donations <span class="currency">₹</span></label>
+            <input type="number" id="sec80g" placeholder="e.g. 0" min="0" />
+          </div>
+          <div class="form-group">
+            <label>Section 80TTA – Savings Interest <span class="hint">(max ₹10,000)</span></label>
+            <input type="number" id="sec80tta" placeholder="e.g. 0" min="0" max="10000" />
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-calculate" onclick="calculate()">Calculate Tax</button>
+          <button class="btn-reset" onclick="resetForm()">Reset</button>
+        </div>
+      </div>
+
+      <!-- Right: Results -->
+      <div class="calc-results" id="resultsPanel">
+        <div class="results-placeholder" id="resultsPlaceholder">
+          <div class="placeholder-icon">🧮</div>
+          <p>Enter your income details and click <strong>Calculate Tax</strong> to see your tax liability.</p>
+        </div>
+
+        <div class="results-content hidden" id="resultsContent">
+
+          <h2 class="section-title">Your Tax Summary</h2>
+          <p class="results-subtitle" id="resultsMeta"></p>
+
+          <div class="regime-cards">
+            <!-- New Regime -->
+            <div class="regime-card new-regime" id="newRegimeCard">
+              <div class="regime-badge recommended hidden" id="newRecommended">Recommended</div>
+              <h3>New Tax Regime</h3>
+              <div class="tax-amount" id="newTaxTotal">₹0</div>
+              <div class="tax-breakdown" id="newBreakdown"></div>
+            </div>
+            <!-- Old Regime -->
+            <div class="regime-card old-regime" id="oldRegimeCard">
+              <div class="regime-badge recommended hidden" id="oldRecommended">Recommended</div>
+              <h3>Old Tax Regime</h3>
+              <div class="tax-amount" id="oldTaxTotal">₹0</div>
+              <div class="tax-breakdown" id="oldBreakdown"></div>
+            </div>
+          </div>
+
+          <div class="savings-banner" id="savingsBanner"></div>
+
+          <div class="income-summary card-inner">
+            <h4>Income Summary</h4>
+            <table class="summary-table" id="incomeSummaryTable"></table>
+          </div>
+
+          <div class="cta-box">
+            <p>Start investing your tax savings smartly.</p>
+            <a href="#" class="btn-primary">Invest Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Slab Tables -->
+  <section class="slabs-section container">
+    <h2>Tax Slabs: Old vs New Regime (FY 2025-26)</h2>
+    <div class="slabs-grid">
+      <div class="slab-table card">
+        <h3>New Tax Regime</h3>
+        <table>
+          <thead><tr><th>Income Range</th><th>Tax Rate</th></tr></thead>
+          <tbody>
+            <tr><td>Up to ₹3,00,000</td><td>Nil</td></tr>
+            <tr><td>₹3,00,001 – ₹7,00,000</td><td>5%</td></tr>
+            <tr><td>₹7,00,001 – ₹10,00,000</td><td>10%</td></tr>
+            <tr><td>₹10,00,001 – ₹12,00,000</td><td>15%</td></tr>
+            <tr><td>₹12,00,001 – ₹15,00,000</td><td>20%</td></tr>
+            <tr><td>Above ₹15,00,000</td><td>30%</td></tr>
+          </tbody>
+        </table>
+        <p class="slab-note">Standard Deduction: ₹75,000 | Rebate u/s 87A: up to ₹7,00,000</p>
+      </div>
+      <div class="slab-table card">
+        <h3>Old Tax Regime</h3>
+        <table>
+          <thead><tr><th>Income Range</th><th>Tax Rate</th></tr></thead>
+          <tbody>
+            <tr><td>Up to ₹2,50,000</td><td>Nil</td></tr>
+            <tr><td>₹2,50,001 – ₹5,00,000</td><td>5%</td></tr>
+            <tr><td>₹5,00,001 – ₹10,00,000</td><td>20%</td></tr>
+            <tr><td>Above ₹10,00,000</td><td>30%</td></tr>
+          </tbody>
+        </table>
+        <p class="slab-note">Standard Deduction: ₹50,000 | Rebate u/s 87A: up to ₹5,00,000</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Use -->
+  <section class="how-section container">
+    <h2>How to Use This Calculator</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h4>Select Assessment Year</h4>
+        <p>Choose the financial year for which you want to calculate your income tax.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h4>Enter Income Details</h4>
+        <p>Fill in your salary, rental income, interest income, and any other sources.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h4>Add Deductions</h4>
+        <p>Enter eligible deductions under 80C, 80D, 80E etc. (applicable for Old Regime).</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h4>Compare &amp; Decide</h4>
+        <p>View side-by-side results for both regimes and choose what saves you more tax.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>What is the difference between Old and New Tax Regime?</summary>
+        <p>The Old Regime allows various deductions (80C, 80D, HRA, etc.) but has higher base rates. The New Regime offers lower slab rates but most deductions are not available. From FY 2023-24, the New Regime is the default.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is the standard deduction for salaried employees?</summary>
+        <p>For FY 2025-26, the standard deduction is ₹75,000 under the New Regime and ₹50,000 under the Old Regime for salaried employees and pensioners.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is there a rebate under Section 87A?</summary>
+        <p>Yes. Under the New Regime, a full tax rebate is available if your net taxable income does not exceed ₹7,00,000. Under the Old Regime, the rebate applies up to ₹5,00,000.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is Health and Education Cess?</summary>
+        <p>A 4% cess is levied on the income tax amount (including surcharge, if applicable) for all taxpayers.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is surcharge and when does it apply?</summary>
+        <p>Surcharge applies when income exceeds ₹50 lakhs: 10% for ₹50L–₹1Cr, 15% for ₹1Cr–₹2Cr, 25% for ₹2Cr–₹5Cr, and 37% (Old) / 25% (New) above ₹5Cr.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I switch between Old and New Regime every year?</summary>
+        <p>Salaried individuals without business income can switch between regimes every year. Taxpayers with business income can switch only once.</p>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- Other Calculators -->
+  <section class="other-calculators container">
+    <h2>Explore Other Calculators</h2>
+    <div class="calc-links">
+      <a href="#" class="calc-link-card">SIP Calculator</a>
+      <a href="#" class="calc-link-card">Lumpsum Calculator</a>
+      <a href="#" class="calc-link-card">FD Calculator</a>
+      <a href="#" class="calc-link-card">PPF Calculator</a>
+      <a href="#" class="calc-link-card">NPS Calculator</a>
+      <a href="#" class="calc-link-card">HRA Calculator</a>
+      <a href="#" class="calc-link-card">Brokerage Calculator</a>
+      <a href="#" class="calc-link-card">CAGR Calculator</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner container">
+      <div class="footer-logo">
+        <span class="footer-logo-text">Indiabulls <span>Securities</span></span>
+        <p>SEBI Reg. No.: INZ000188833 | NSE: 07533 | BSE: 663</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h5>Products</h5>
+          <a href="#">Equity Trading</a>
+          <a href="#">Derivatives</a>
+          <a href="#">Mutual Funds</a>
+          <a href="#">IPO</a>
+        </div>
+        <div>
+          <h5>Tools</h5>
+          <a href="#">Calculators</a>
+          <a href="#">Market Watch</a>
+          <a href="#">Research Reports</a>
+          <a href="#">Portfolio Tracker</a>
+        </div>
+        <div>
+          <h5>Company</h5>
+          <a href="#">About Us</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Grievance</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 Indiabulls Securities Limited. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Disclaimer</a></p>
+        <p class="disclaimer">Investments in securities market are subject to market risks. Read all the related documents carefully before investing.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="calculator.js"></script>
+</body>
+</html>
